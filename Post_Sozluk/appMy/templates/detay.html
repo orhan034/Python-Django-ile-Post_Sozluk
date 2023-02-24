@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-8">
+                <div class="card mb-3">
+                    <img src="{{ sozluk.image.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ sozluk.baslik }}</h5>
+                      <p class="card-text">{{ sozluk.icerik }}</p>
+                      <p class="card-text"><small class="text-muted">{{ sozluk.zaman }}</small></p>
+                    </div>
+                  </div>
+                  <h3>Yorumlar</h3>
+                  <section style="background-color: #ad655f;">
+                    <div class="container pt-2 pb-2">
+                      <div class="row d-flex justify-content-center">
+                        <div class="col-12">
+                          <div class="card text-dark">
+                            <div class="card-body p-4">
+                              <h4 class="mb-0">Tüm Yorumlar</h4>
+                              <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
+                              
+                              {% for i in yorumlar %}
+                                <div class="d-flex flex-start">
+                                <img class="rounded-circle shadow-1-strong me-3"
+                                  src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp" alt="avatar" width="60"
+                                  height="60" />
+                                <div>
+                                  <h6 class="fw-bold mb-1">{{ i.yorumu_yapan }}</h6>
+                                  <div class="d-flex align-items-center mb-3">
+                                    <p class="mb-0">
+                                      {{ i.zaman }}
+                                      <span class="badge bg-primary">{{ i.baslik }}</span>
+                                    </p>
+                                    <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                                    <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
+                                    <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
+                                  </div>
+                                  <p class="mb-0">
+                                   {{ i.yorum }}
+                                  </p>
+                                </div>
+                              </div>
+                              {% endfor %}
+                                
+                              
+                            </div>
+                  
+                            <hr class="my-0" />
+                  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <div class="col-12 mb-4">
+                    <h3>Yorum Yap</h3>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="yorumu_yapan" id="" class="form-control my-2" placeholder="Ad Soyad">
+                        <input type="text" name="baslik" id="" class="form-control my-2" placeholder="Yorum Başlığı">
+                        <textarea class="form-control my-2" name="yorum" id="" cols="30" rows="10" placeholder="Yorum"></textarea>
+                        <button type="submit" class="btn btn-primary">Yorumu Paylaş</button>
+                    </form>
+                </div>
+            </div>
+            {% include 'part/_sidenav.html' %}
+        </div>
+    </div>
+{% endblock body %}
+    

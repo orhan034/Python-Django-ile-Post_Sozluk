@@ -1,0 +1,69 @@
+
+            <!-- Side Naw -->
+            <div class="col-4">
+                <h3>Kategoriler</h3>
+                <div class="list-group mb-4">
+                  
+                  {% for i in category %}     
+                  <a href="/post/{{ i.id }}/" class="list-group-item list-group-item-action">{{ i.baslik }}</a>
+                  {% endfor %}
+                    
+  
+                </div>
+                <h3>Akordion</h3>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                  
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        Yeni Bilgiler
+                      </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">
+                        <ol class="list-group list-group-numbered">
+                         
+                         {% for i in yeni_bilgiler %}
+                           <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                              <div class="fw-bold">{{ i.baslik }}</div>
+                              {{ i.zaman }}
+                            </div>
+                            <span class="badge bg-primary rounded-pill">14</span>
+                          </li>
+                         {% endfor %}
+  
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-heading2">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
+                        Rasgele Bilgiler
+                      </button>
+                    </h2>
+                    <div id="flush-collapse2" class="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">
+                        <ol class="list-group list-group-numbered">
+                         
+                         {% for i in rasgele_bilgiler %}
+                           <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                              <div class="fw-bold">{{ i.baslik }}</div>
+                              {{ i.zaman }}
+                            </div>
+                            <span class="badge bg-primary rounded-pill">14</span>
+                          </li>
+  
+                         {% endfor %}
+                          
+                         
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
